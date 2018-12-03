@@ -1,0 +1,175 @@
+﻿@model GenaratePdf.Projection.TemplatePdf
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Product</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #fff;
+            width: 750px;
+            padding-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-5">
+                <div>@Model.CompanyName</div>
+            </div>
+            <div class="col-xs-7">
+                <div class="pull-right">
+                    <span>ĐT:@Model.CompanyPhone</span>-
+                    <span>Fax:@Model.CompanyFax</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5">
+                <div>@Model.CompanyAddress</div>
+            </div>
+            <div class="col-xs-7">
+                <div class="pull-right">Tối: 38267927-39275068-39275068</div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:center">
+                <div><strong>PHIẾU BÁO GIÁ NGÀY: @Model.ReportDate</strong> </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:center">
+                <div>HDL/D1/17/000008526</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:left">
+                <div>Khách hàng: @Model.Customer</div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>TT</th>
+                            <th>Tên Hàng</th>
+                            <th>SL</th>
+                            <th>ĐVL</th>
+                            <th>Đơn Giá</th>
+                            <th>KM</th>
+                            <th>Thành Tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            for (var i = 0; i < Model.ListTemplate.Count; i++)
+                            {
+                                var rowData = Model.ListTemplate[i];
+                                <tr>
+                                    <td>@(i + 1)</td>
+                                    <td>@rowData.ProductName</td>
+                                    <td>@rowData.Number</td>
+                                    <td>@rowData.DVL</td>
+                                    <td>@rowData.Cost</td>
+                                    <td>@rowData.DiscountCost</td>
+                                    <td>@rowData.TotalCost</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-5" style="text-align:left">
+                <div>Chiết khấu hóa đơn,hàng trả: 0</div>
+            </div>
+            <div class="col-xs-5" style="text-align:right">
+                <div>Tổng cộng hóa đơn: 3,908,000</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:right">
+                <div>Cộng nợ cũ: 8,127,500</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:right">
+                <div>Tổng cộng tiền thanh toán: 0</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:right">
+                <div>Tổng cộng nợ: 12,135,500</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align:left">
+                <div>Tổng tiền viết bằng chữ: <strong>Mười hai triệu một trăm ba mươi năm nghìn năm trăm VNĐ</strong></div>
+            </div>
+        </div>
+        <div class="row" style="padding-top:15px">
+            <div class="col-xs-12" style="text-align:left">
+                <div><strong>Chú ý: Hàng mua không quá 10 ngày được trả lại</strong></div>
+                <div style="padding-left:47px"><strong>Hàng Thượng Đình trả lại phải nguyên tem mác (Công ty yêu cầu)</strong></div>
+            </div>
+        </div>
+
+        <div class="row" style="padding-top:20px">
+            <div class="col-xs-3" style="text-align:center">
+                <div><strong>Người lập phiếu</strong></div>
+            </div>
+            <div class="col-xs-3" style="text-align:center">
+                <div><strong>Phụ trách bán hàng</strong></div>
+            </div>
+            <div class="col-xs-3" style="text-align:center">
+                <div><strong>Thu ngân</strong></div>
+            </div>
+            <div class="col-xs-3" style="text-align:center">
+                <div><strong>Khách hàng</strong></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3" style="text-align:center">
+                <div>(Ký,ghi rõ họ tên)</div>
+            </div>
+            <div class="col-xs-3" style="text-align:center">
+                <div>(Ký,ghi rõ họ tên)</div>
+            </div>
+            <div class="col-xs-3" style="text-align:center">
+                <div>(Ký,ghi rõ họ tên)</div>
+            </div>
+            <div class="col-xs-3" style="text-align:center">
+                <div>(Ký,ghi rõ họ tên)</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+
+
+<script>
+    var jsonpost= '@(Newtonsoft.Json.JsonConvert.SerializeObject(Model))'
+
+    jQuery.post("", jsonpost);
+
+</script>
